@@ -12,3 +12,5 @@ container `dns-test-175`, it complains that it cannot connect to Elasticsearch:
     main.main()
       /go/src/github.com/YanhaoYang/debug-dns-problem/main.go:17 +0x206
     exit status 2
+
+The debugging process can be found in [Debug a DNS problem with Go 1.7.5 in Docker container](https://medium.com/@yangyanhao/debug-a-dns-problem-with-go-1-7-5-in-docker-container-de4854751570#.4msljnqqs).
