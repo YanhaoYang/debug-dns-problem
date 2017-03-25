@@ -1,0 +1,43 @@
+version: "2"
+services:
+  elasticsearch:
+    container_name: dns-test-elasticsearch
+    image: elasticsearch:5.2.0
+    ports:
+      - "9201:9200"
+  dns-test-175:
+    container_name: dns-test-175
+    image: golang:1.7.5
+    hostname: dns-test-175.dev
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./src:/go/src/github.com/YanhaoYang/debug-dns-problem
+    environment:
+      - ES_SERVER_URL=http://elasticsearch:9200
+    working_dir: /go/src/github.com/YanhaoYang/debug-dns-problem
+    command: /bin/sh -c "while true; do echo hello; sleep 60; done"
+  dns-test-175x:
+    container_name: dns-test-175x
+    image: golang:1.7.5
+    hostname: dns-test-175x
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./src:/go/src/github.com/YanhaoYang/debug-dns-problem
+    environment:
+      - ES_SERVER_URL=http://elasticsearch:9200
+    working_dir: /go/src/github.com/YanhaoYang/debug-dns-problem
+    command: /bin/sh -c "while true; do echo hello; sleep 60; done"
+  dns-test-18:
+    container_name: dns-test-18
+    image: golang:1.8
+    hostname: dns-test-18.dev
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./src:/go/src/github.com/YanhaoYang/debug-dns-problem
+    environment:
+      - ES_SERVER_URL=http://elasticsearch:9200
+    working_dir: /go/src/github.com/YanhaoYang/debug-dns-problem
+    command: /bin/sh -c "while true; do echo hello; sleep 60; done"
